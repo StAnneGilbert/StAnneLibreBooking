@@ -63,7 +63,7 @@
                                 {if $RepeatMonthlyType neq ''}
                                     ({$RepeatMonthlyType})
                                 {/if}
-                                {if count($RepeatWeekdays) gt 0}
+                                {if count((array)$RepeatWeekdays) gt 0}
                                     <br/>
                                     <label>{translate key='RepeatDaysPrompt'}</label>
                                     {foreach from=$RepeatWeekdays item=day}{translate key=$DayNames[$day]} {/foreach}
