@@ -9,7 +9,10 @@
     "require" : {
         "php": ">=7.4",
         "smarty/smarty": "^4.3",
-        "stripe/stripe-php": "^10.2"
+        "stripe/stripe-php": "^10.2",
+        "monolog/monolog": "^2.9",
+        "google/recaptcha": "1.2.4",
+        "gregwar/captcha": "1.*"
     },
     "scripts": {
         "install-tools":"phive install --trust-gpg-keys",
