@@ -7,7 +7,7 @@ function GetSelectedResourceIds() {
 	});
 	return resourceIds;
 }
-
+	
 function LoadCustomAttributesData() {
 	var url = 'ajax/reservation_attributes_print.php?uid=' + $('#userId').val() + '&rn=' + $('#referenceNumber').val() + '&ro=' + $('#reservation-box').hasClass('readonly');
 
@@ -96,12 +96,12 @@ $('.btnPDF').click(function (e) {
 		 { content: '{formatdate date=$EndDate key=embedded_datetime}'},
 		],
 		[{ content: '{translate key=ReservationLength}', styles: { fontStyle: 'bold'}},
-		 { colSpan: 3, content: durationText},
+		 { colSpan: 3, content: durationText},	 
 		],
 		[{ content: '{translate key=RepeatPrompt}', styles: { fontStyle: 'bold'}},
 		{if $IsRecurring}
 		 { content: '{translate key=$RepeatOptions[$RepeatType]['key']}'},
-		 { content: '{$RepeatInterval}'},
+		 { content: '{$RepeatInterval}'},	
 		 { content: '{translate key=$RepeatOptions[$RepeatType]['everyKey']}'},
 		{else}
 		 { colSpan: 3, content: '{translate key=$RepeatOptions[$RepeatType]['key']}'},
@@ -117,13 +117,13 @@ $('.btnPDF').click(function (e) {
 				{/if}
 				],
 			{/if}
-			{if count((array)$RepeatWeekdays) gt 0}
+			{if (is_array($RepeatWeekdays) && count($RepeatWeekdays) gt 0)}
 				[{ content: daysText, styles: { fontStyle: 'bold'}},
 				{ colSpan: 3, content: '{foreach from=$RepeatWeekdays item=day name=weekdaysLoop}{if $smarty.foreach.weekdaysLoop.last}{translate key=$DayNames[$day]}{else}{translate key=$DayNames[$day]},{/if} {/foreach}'},
 				],
-			{/if}
+			{/if}	
 			[{ content: '{{translate key=RepeatUntilPrompt}|escape:'javascript'}', styles: { fontStyle: 'bold'}},
-			 { colSpan: 3, content: '{formatdate date=$RepeatTerminationDate}'},
+			 { colSpan: 3, content: '{formatdate date=$RepeatTerminationDate}'},	 
 			],
 		{/if}
 		],
